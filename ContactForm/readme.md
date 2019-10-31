@@ -2,6 +2,8 @@
 
 **Contact form processing library which may send emails and/or POST data to webhook or REST API.**
 
+[![Build status](https://ovicrisan.visualstudio.com/ContactForm/_apis/build/status/ContactForm-NuGet-CI)](https://ovicrisan.visualstudio.com/ContactForm/_build/latest?definitionId=2)
+
 Declaration of the main function that does the work:
 
 `public ContactResult Submit(ContactModel contact, ContactSettings contactSettings)`
