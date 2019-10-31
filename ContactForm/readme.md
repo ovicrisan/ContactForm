@@ -13,7 +13,7 @@ Where
 * `ContactModel` has the actual data posted to email notification or webhook / REST API;
 * `ContactSettings` has all configuration settings for email notification and HTTP posting, from the calling code (see `ContactForm.Web` project in this solution).
 
-Then it's called simply, from Web App / API, Azure Function or even AWS Lambda.
+Then it's called simply, from Web App / API, Azure Function or even AWS Lambda. (soon)
 
 
 
