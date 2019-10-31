@@ -8,7 +8,8 @@
     <Description>Contact form processing library which may send emails and/or POST data to webhook or REST API.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>OviCrisan.ContactForm</PackageId>
-    <RepositoryUrl>https://github.com/OviCrisan/ContactForm</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ovicrisan/ContactForm/tree/master/ContactForm</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
