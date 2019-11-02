@@ -6,6 +6,9 @@
         {
             get
             {
+                if (RecaptchaResult != null && RecaptchaResult.ServiceResultType != ServiceResultType.Success)
+                    return false;
+
                 if (EmailResult == null)
                     if (PostResult == null)
                         return true;
@@ -21,5 +24,6 @@
 
         public ServiceResult EmailResult { get; set; }
         public ServiceResult PostResult { get; set; }
+        public ServiceResult RecaptchaResult { get; set; } 
     }
 }

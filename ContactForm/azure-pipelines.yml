@@ -32,40 +32,6 @@ steps:
     configuration: '$(BuildConfiguration)'
     msbuildArchitecture: x64
 
-- task: VSTest@2
-  displayName: 'VsTest - testAssemblies'
-  inputs:
-    testAssemblyVer2: |
-     **\$(BuildConfiguration)\*test*.dll
-     !**\obj\**
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
-  enabled: false
-
-- task: PublishSymbols@2
-  displayName: 'Publish symbols path'
-  inputs:
-    SearchPattern: '**\bin\**\*.pdb'
-    PublishSymbols: false
-  enabled: false
-  continueOnError: true
-
-- task: NuGetCommand@2
-  displayName: 'NuGet pack'
-  inputs:
-    command: pack
-    packagesToPack: '$(Build.BinariesDirectory)/**/*.nupkg'
-    includeReferencedProjects: true
-  enabled: false
-
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\ContactForm\bin\any cpu\release\'
-    Contents: '*'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  enabled: false
-
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   inputs:

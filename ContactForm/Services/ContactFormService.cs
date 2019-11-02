@@ -10,6 +10,17 @@ namespace ContactForm
         {
             var result = new ContactResult();
             if (contact == null) throw new ArgumentNullException("Missing contact form data");
+            if (contactSettings == null) throw new ArgumentNullException("Missing settings");
+
+            if(contactSettings.RecaptchaSettings != null 
+                && contactSettings.RecaptchaSettings.Enabled
+                && !string.IsNullOrEmpty(contactSettings.RecaptchaSettings.RecaptchaKey))
+            {
+                // Check Recaptcha
+                var recaptchaService = new RecaptchaService();
+                result.RecaptchaResult = recaptchaService.Validate(contactSettings.RecaptchaSettings);
+                if(result.RecaptchaResult.ServiceResultType != ServiceResultType.Success) return result;  // Stop processing immediately
+            }
 
             if(contactSettings.EmailSettings != null && contactSettings.EmailSettings.Enabled)
             {
