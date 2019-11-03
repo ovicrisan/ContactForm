@@ -1,5 +1,6 @@
 ﻿using ContactForm.Models;
-using System.Text.Json;
+//using System.Text.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -32,7 +33,8 @@ namespace ContactForm.Services
                 }
                 else
                 {
-                    content = new StringContent(JsonSerializer.Serialize(contact), Encoding.UTF8, "application/json");
+                    //content = new StringContent(JsonSerializer.Serialize(contact), Encoding.UTF8, "application/json");
+                    content = new StringContent(JsonConvert.SerializeObject(contact), Encoding.UTF8, "application/json");
                 }
                 var response = client.PostAsync(postSettings.PostURL, content).GetAwaiter().GetResult();
                 //var contents = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();

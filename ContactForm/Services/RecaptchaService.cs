@@ -1,7 +1,8 @@
 ﻿using ContactForm.Models;
 using System;
 using System.Net.Http;
-using System.Text.Json;
+//using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace ContactForm.Services
 {
@@ -15,7 +16,8 @@ namespace ContactForm.Services
             try
             {
                 var responseString = client.GetStringAsync($"https://www.recaptcha.net/recaptcha/api/siteverify?secret={recaptchaSettings.RecaptchaKey}&response={recaptchaSettings.RecaptchaResponse}").GetAwaiter().GetResult();
-                var response = JsonSerializer.Deserialize<RecaptchaResponse>(responseString);
+                //var response = JsonSerializer.Deserialize<RecaptchaResponse>(responseString);
+                var response = JsonConvert.DeserializeObject<RecaptchaResponse>(responseString);
                 if (response.success)
                     result.ServiceResultType = ServiceResultType.Success;
                 else

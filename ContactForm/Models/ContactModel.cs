@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿//using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ContactForm
 {
@@ -10,7 +11,8 @@ namespace ContactForm
         public string Subject { get; set; }
         public string Category { get; set; }
         public string Message { get; set; }
-        [JsonPropertyName("g-recaptcha-response")]
+        //[JsonPropertyName("g-recaptcha-response")]
+        [JsonProperty(PropertyName = "g-recaptcha-response")]
         public string RecaptchaResponse { get; set; }
     }
 }
