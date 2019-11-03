@@ -1,0 +1,37 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*"
+  },
+  "ContactSettings": {
+    "EmailSettings": {
+      "MailServer": "smtp.gmail.com",
+      "Username": "***@gmail.com",
+      "Password": "***",
+      "MailSender": "***@gmail.com",
+      "MailSenderName": "***",
+      "MailReciever": "receiver@email.com",
+      "MailPort": 587,
+      "MailSecurity": 1,
+      "SubjectPrefix": "Contact form notification: ",
+      "Enabled": false
+    },
+    "PostSettings": {
+      "PostURL": "https://postman-echo.com/post",
+      "EncType": 1,
+      "RedirectURL": "https://ovicrisan.github.io/ContactForm/?success={0}",
+      "RedirectSeconds": 10,
+      "RedirectText": "Click here to continue",
+      "Enabled": true
+    },
+    "RecaptchaSettings": {
+      "RecaptchaKey": "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+      "Enabled": true
+    }
+  }
+}
