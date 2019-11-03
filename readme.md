@@ -7,3 +7,5 @@ The core functionality of sending notification emails and/or calling a webhook o
 [ContactForm](https://github.com/ovicrisan/ContactForm/tree/master/ContactForm) .NET Standard library, then used by all other projects.
 
 For details on each separate project see their *readme.md* files.
+
+See a working example using an [Azure App Service deployment](https://contactformweb.azurewebsites.net/) at [https://OviCrisan.github.io/ContactForm/](https://ovicrisan.github.io/ContactForm/).

@@ -27,7 +27,7 @@ namespace ContactForm.Web.Controllers
         [HttpGet("/")]
         public IActionResult Index()
         {
-            return Content("(Error: POST here, as JSON or form encoded)");
+            return Content("(Error: POST here, as JSON or form encoded, for details see https://github.com/OviCrisan/ContactForm )");
         }
 
         [HttpPost("/")]
