@@ -42,39 +42,10 @@ namespace ContactForm.Web.Controllers
             }
 
             var result = contactFormService.Submit(contact, contactSettings);
-            StringBuilder sbResult = new StringBuilder();
-            sbResult.AppendLine(result.Success ? "Successfully executed: <br />" : "Execution result: <br />");
-            if (result.EmailResult != null && result.EmailResult.ServiceResultType != ServiceResultType.None)
-                sbResult.AppendFormat("{0} <br/>", result.EmailResult.Message);
-            if (result.PostResult != null && result.PostResult.ServiceResultType != ServiceResultType.None)
-                sbResult.AppendFormat("{0} <br/>", result.PostResult.Message);
-            if (result.RecaptchaResult != null && result.RecaptchaResult.ServiceResultType != ServiceResultType.Success)
-                sbResult.AppendFormat("Invalid reCAPTCHA: {0} <br/>", result.RecaptchaResult.Message);
-
-            if (!string.IsNullOrEmpty(contactSettings.PostSettings.RedirectURL) && contactSettings.PostSettings.RedirectSeconds >= -1)
-            {
-                var redirectURL = string.Format(contactSettings.PostSettings.RedirectURL, result.Success ? "1" : "0");
-                if (contactSettings.PostSettings.RedirectSeconds == -1)
-                {
-                    // Redirect immediately
-                    return new RedirectResult(redirectURL);
-                }
-                else
-                if (contactSettings.PostSettings.RedirectSeconds >= 0)
-                {
-                    // No redirect but show 'Click to continue'
-                    sbResult.AppendFormat("<a href='{0}'>{1}</a>", redirectURL, contactSettings.PostSettings.RedirectText);
-
-                    if (contactSettings.PostSettings.RedirectSeconds > 0)
-                    {
-                        // JS redirect after RedirectSeconds
-                        sbResult.AppendFormat("\r\n<script type='text/javascript'>setTimeout(function() {{document.location.href='{0}'}}, {1})</script>",
-                            redirectURL, contactSettings.PostSettings.RedirectSeconds * 1000);
-                    }
-                }
-            }
-
-            return new ContentResult { Content = sbResult.ToString(), ContentType = "text/html", StatusCode = 200 };
+            if (!string.IsNullOrEmpty(contactSettings.PostSettings.RedirectURL) && contactSettings.PostSettings.RedirectSeconds == -1)
+                return new RedirectResult(string.Format(contactSettings.PostSettings.RedirectURL, result.Success ? "1" : "0"));
+            else
+                return new ContentResult { Content = contactFormService.GetResultHTML(result, contactSettings), ContentType = "text/html", StatusCode = 200 };
         }
 
         [HttpPost("/")]
