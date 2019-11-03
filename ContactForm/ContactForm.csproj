@@ -9,8 +9,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>OviCrisan.ContactForm</PackageId>
     <RepositoryUrl>https://github.com/ovicrisan/ContactForm/tree/master/ContactForm</RepositoryUrl>
-    <Version>1.1.1</Version>
-    <PackageReleaseNotes>Changed from System.Text.Json to Newtonsoft.Json 11.0.2 for Azure Functions.</PackageReleaseNotes>
+    <Version>1.1.2</Version>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
