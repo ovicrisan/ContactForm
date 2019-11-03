@@ -74,7 +74,7 @@ namespace ContactForm.Web.Controllers
                 }
             }
 
-            return new ContentResult { Content = sbResult.ToString(), ContentType = "text/html" };
+            return new ContentResult { Content = sbResult.ToString(), ContentType = "text/html", StatusCode = 200 };
         }
 
         [HttpPost("/")]
