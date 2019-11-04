@@ -1,0 +1,26 @@
+{
+  "profiles": {
+    "Mock Lambda Test Tool": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\%USERNAME%\\.dotnet\\tools\\dotnet-lambda-test-tool-2.1.exe",
+      "commandLineArgs": "--port 5050",
+      "workingDirectory": ".\\bin\\Debug\\netcoreapp2.1",
+	  "environmentVariables": {
+		  "RecaptchaKey": "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe",
+		  "RecaptchaEnabled": "true",
+		  "PostURL": "https://postman-echo.com/post",
+		  "PostEnabled": "true",
+		  "MailServer": "smtp.gmail.com",
+		  "Username": "***@gmail.com",
+		  "Password": "***",
+		  "MailSender": "***@gmail.com",
+		  "MailSenderName": "***",
+		  "MailReciever": "receiver@email.com",
+		  "MailPort": "587",
+		  "MailSecurity": "1",
+		  "SubjectPrefix": "Contact form notification: ",
+		  "MailEnabled": "false"	  
+      }
+    }
+  }
+}
