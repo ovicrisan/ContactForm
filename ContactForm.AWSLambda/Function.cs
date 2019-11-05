@@ -18,7 +18,7 @@ namespace ContactForm.AWSLambda
             var settings = GetSettings();
             settings.RecaptchaSettings.RecaptchaResponse = contact.RecaptchaResponse;
 
-            var contactService = new ContactFormService();
+            var contactService = new ContactFormService(new LoggerAdapter(context.Logger));
             return contactService.Submit(contact, settings);
         }
 
