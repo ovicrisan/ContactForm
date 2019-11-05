@@ -32,6 +32,8 @@ namespace ContactForm.Services
                     {
                         result.ServiceResultType = ServiceResultType.Error;
                         result.Message = response.error_codes[0];
+                        if(result.Message.EndsWith("secret"))
+                            logger.LogInformation("Recaptcha failed: {0} / {1}", recaptchaSettings.RecaptchaKey?.Substring(0,10), recaptchaSettings.RecaptchaResponse?.Substring(0, 15));
                     }
                 }
             }
