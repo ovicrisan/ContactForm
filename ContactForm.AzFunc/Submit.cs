@@ -54,7 +54,7 @@ namespace ContactForm.AzFunc
                 var contactSettings = new ContactSettings();
                 config.GetSection("ContactSettings").Bind(contactSettings);
 
-                var contactService = new ContactFormService();
+                var contactService = new ContactFormService(log);
                 contactSettings.RecaptchaSettings.RecaptchaResponse = contact.RecaptchaResponse;
                 var result = contactService.Submit(contact, contactSettings);
 

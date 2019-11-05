@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace ContactForm.Web
 {
@@ -25,7 +26,11 @@ namespace ContactForm.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ContactSettings>(Configuration.GetSection("ContactSettings"));
-            services.AddScoped<ContactFormService>();
+            services.AddScoped(c =>
+            {
+                var logger = c.GetRequiredService<ILogger<ContactFormService>>();
+                return new ContactFormService(logger);
+            });
             services.AddCors(c => c.AddDefaultPolicy(b =>
             {
                 b.AllowAnyOrigin();
@@ -33,7 +38,7 @@ namespace ContactForm.Web
                 //b.AllowAnyHeader();
                 b.WithHeaders("Content-Type");
             }));
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
