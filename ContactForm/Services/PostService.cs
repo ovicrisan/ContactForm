@@ -1,4 +1,5 @@
 ﻿using ContactForm.Models;
+using Microsoft.Extensions.Logging;
 //using System.Text.Json;
 using Newtonsoft.Json;
 using System;
@@ -11,7 +12,7 @@ namespace ContactForm.Services
 {
     public class PostService
     {
-        public ServiceResult Post(ContactModel contact, PostSettings postSettings)
+        public ServiceResult Post(ContactModel contact, PostSettings postSettings, ILogger logger = null)
         {
             var result = new ServiceResult { ServiceResultType = ServiceResultType.None };
             var client = new HttpClient();
@@ -33,8 +34,10 @@ namespace ContactForm.Services
                 }
                 else
                 {
-                    //content = new StringContent(JsonSerializer.Serialize(contact), Encoding.UTF8, "application/json");
-                    content = new StringContent(JsonConvert.SerializeObject(contact), Encoding.UTF8, "application/json");
+                    //string tmpContent = JsonSerializer.Serialize(contact);
+                    string tmpContent = JsonConvert.SerializeObject(contact);
+                    content = new StringContent(tmpContent, Encoding.UTF8, "application/json");
+                    if (logger != null) logger.LogInformation(tmpContent);
                 }
                 var response = client.PostAsync(postSettings.PostURL, content).GetAwaiter().GetResult();
                 //var contents = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
@@ -45,6 +48,7 @@ namespace ContactForm.Services
             {
                 result.ServiceResultType = ServiceResultType.Error;
                 result.Message = ex.Message;
+                if (logger != null) logger.LogInformation(ex, "PostService error");
             }
             return result;
         }

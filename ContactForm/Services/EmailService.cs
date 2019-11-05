@@ -1,4 +1,5 @@
 ﻿using ContactForm.Models;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -8,7 +9,7 @@ namespace ContactForm.Services
 {
     public class EmailService
     {
-        public ServiceResult SendEmail(ContactModel contact, EmailSettings emailSettings)
+        public ServiceResult SendEmail(ContactModel contact, EmailSettings emailSettings, ILogger logger = null)
         {
             var result = new ServiceResult { ServiceResultType = ServiceResultType.None };
             try
@@ -44,6 +45,7 @@ Category: {contact.Category}
             {
                 result.ServiceResultType = ServiceResultType.Error;
                 result.Message = ex.Message;
+                if (logger != null) logger.LogInformation(ex, "EmailService error");
             }
             return result;
         }

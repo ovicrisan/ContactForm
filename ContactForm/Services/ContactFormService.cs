@@ -1,5 +1,6 @@
 ﻿using ContactForm.Models;
 using ContactForm.Services;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Text;
 
@@ -7,11 +8,26 @@ namespace ContactForm
 {
     public class ContactFormService
     {
+        public readonly ILogger logger;
+
+        public ContactFormService()
+        {
+        }
+
+        public ContactFormService(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
         public ContactResult Submit(ContactModel contact, ContactSettings contactSettings)
         {
             var result = new ContactResult();
             if (contact == null) throw new ArgumentNullException("Missing contact form data");
             if (contactSettings == null) throw new ArgumentNullException("Missing settings");
+
+            if (logger != null) logger.LogInformation("Contact: {0} / {1} / {2} [Email: {3}, Post: {4}, Recaptcha: {5}]",
+                contact.ContactName, contact.Email, contact.Phone, contactSettings.EmailSettings?.Enabled,
+                contactSettings.PostSettings?.Enabled, contactSettings.RecaptchaSettings?.Enabled);
 
             if (contactSettings.RecaptchaSettings != null
                 && contactSettings.RecaptchaSettings.Enabled
@@ -19,20 +35,20 @@ namespace ContactForm
             {
                 // Check Recaptcha
                 var recaptchaService = new RecaptchaService();
-                result.RecaptchaResult = recaptchaService.Validate(contactSettings.RecaptchaSettings);
+                result.RecaptchaResult = recaptchaService.Validate(contactSettings.RecaptchaSettings, logger);
                 if (result.RecaptchaResult.ServiceResultType != ServiceResultType.Success) return result;  // Stop processing immediately
             }
 
             if (contactSettings.EmailSettings != null && contactSettings.EmailSettings.Enabled)
             {
                 var emailService = new EmailService();
-                result.EmailResult = emailService.SendEmail(contact, contactSettings.EmailSettings);
+                result.EmailResult = emailService.SendEmail(contact, contactSettings.EmailSettings, logger);
             }
 
             if (contactSettings.PostSettings != null && contactSettings.PostSettings.Enabled && !string.IsNullOrEmpty(contactSettings.PostSettings.PostURL))
             {
                 var postService = new PostService();
-                result.PostResult = postService.Post(contact, contactSettings.PostSettings);
+                result.PostResult = postService.Post(contact, contactSettings.PostSettings, logger);
             }
             return result;
         }
