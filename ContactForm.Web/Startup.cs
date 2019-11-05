@@ -38,6 +38,7 @@ namespace ContactForm.Web
                 //b.AllowAnyHeader();
                 b.WithHeaders("Content-Type");
             }));
+            services.AddHealthChecks();
             services.AddControllersWithViews().AddNewtonsoftJson();
         }
 
@@ -61,6 +62,7 @@ namespace ContactForm.Web
 
             app.UseCors();
             app.UseAuthorization();
+            app.UseHealthChecks("/healthcheck");
 
             app.UseEndpoints(endpoints =>
             {
