@@ -43,3 +43,33 @@ For environment variable just follow MS rules to replace each level of indentati
 like:
 
 `"ContactSettings__EmailSettings__Enabled" = true`
+
+## Endpoint
+
+The URL of deployed web application is actually the endpoint of both HTTP form POST (using `application/x-www-form-urlencoded` content type) and
+REST API (using `application\json` content type). For the latter, just post the JSON formatted contact form data to the root of the application ('/').
+
+When using HTTP GET you will see this simple message:
+
+`(Error: POST here, as JSON or form encoded, for details see https://github.com/OviCrisan/ContactForm )`
+
+## Azure deployment
+
+The application is already deployed as Azure App Service (on a free plan) as [ContactFormWeb.AzureWebsites.net](https://contactformweb.azurewebsites.net/)  (captcha enabled).
+Sample contact form at [OviCrisan.github.io/ContactForm](https://ovicrisan.github.io/ContactForm/) is using Azure App Service, both as HTTP form post and REST API with AJAX.
+
+## Docker image deployment
+
+`Dockerfile` used for building the Docker image is available in source code, with some default values for environment variables (disabling all options). 
+The image is publicly available at [hub.docker.com/r/OviCrisan/ContactFormWeb](https://hub.docker.com/r/ovicrisan/contactformweb).
+
+To use it locally just try this:
+
+```
+docker pull ovicrisan/contactformweb
+docker run -p 8080:80 -e ContactSettings__PostSettings__Enabled=true  -e ContactSettings__PostSettings__PostURL=https://postman-echo.com/post -e ContactSettings__RecaptchaSettings__Enabled=true -e ContactSettings__RecaptchaSettings__RecaptchaKey=6LeIxAcTAAAAAG1G-vFI1TnRWxMZNFuojJ4WifJWe --rm --name contactform -d ovicrisan/contactformweb
+```
+
+Test it with your own form posting to http://localhost:8080 and then stop it with `docker stop contactform`
+
+The application can be easily be deployed on Azure Container Instances or other cloud hosting.

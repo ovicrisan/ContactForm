@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactForm", "ContactForm\ContactForm.csproj", "{2A9CEE6F-A799-44A3-8173-56E8A74A5FAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactForm.Web", "ContactForm.Web\ContactForm.Web.csproj", "{B3A83426-1AF0-406E-B105-451105CC3459}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7484C67-C509-4214-BD17-1812EC5F428A}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactForm.Tests", "ContactForm.Tests\ContactForm.Tests.csproj", "{96413871-A4D3-453F-B137-8576BC5787B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactForm.Web.Tests", "ContactForm.Web.Tests\ContactForm.Web.Tests.csproj", "{AE015D0F-4388-4CBF-997D-BD4DF1E1A832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactForm.AzFunc", "ContactForm.AzFunc\ContactForm.AzFunc.csproj", "{7A1A77D3-FAA4-48F8-A561-8421FCF32EA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactForm.AWSLambda", "ContactForm.AWSLambda\ContactForm.AWSLambda.csproj", "{9FAFE0DA-5995-476F-95B7-0772377F2582}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A9CEE6F-A799-44A3-8173-56E8A74A5FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9CEE6F-A799-44A3-8173-56E8A74A5FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9CEE6F-A799-44A3-8173-56E8A74A5FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9CEE6F-A799-44A3-8173-56E8A74A5FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A83426-1AF0-406E-B105-451105CC3459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A83426-1AF0-406E-B105-451105CC3459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A83426-1AF0-406E-B105-451105CC3459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A83426-1AF0-406E-B105-451105CC3459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96413871-A4D3-453F-B137-8576BC5787B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96413871-A4D3-453F-B137-8576BC5787B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96413871-A4D3-453F-B137-8576BC5787B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96413871-A4D3-453F-B137-8576BC5787B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE015D0F-4388-4CBF-997D-BD4DF1E1A832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE015D0F-4388-4CBF-997D-BD4DF1E1A832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE015D0F-4388-4CBF-997D-BD4DF1E1A832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE015D0F-4388-4CBF-997D-BD4DF1E1A832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A1A77D3-FAA4-48F8-A561-8421FCF32EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A1A77D3-FAA4-48F8-A561-8421FCF32EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A1A77D3-FAA4-48F8-A561-8421FCF32EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A1A77D3-FAA4-48F8-A561-8421FCF32EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FAFE0DA-5995-476F-95B7-0772377F2582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FAFE0DA-5995-476F-95B7-0772377F2582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FAFE0DA-5995-476F-95B7-0772377F2582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FAFE0DA-5995-476F-95B7-0772377F2582}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC784DCF-C217-4CC9-A1F6-A53C8DA61AE7}
+	EndGlobalSection
+EndGlobal
